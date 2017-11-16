@@ -2,6 +2,25 @@
 
 container to generate SPHINXneeds documentation. Will output HTML and PDF
 
+
+# Running the container
+
+## as prebuild docker image
+```
+    docker run --name sphinxneeds --rm \
+    -e "Project=Sphinx in a docker" \
+    -e "Author=Till Witt" \
+    -e "Version=v1.0" \
+    -v "$(pwd)/input:/project/input" \
+    -v "$(pwd)/output:/project/output" \
+    -i -t tlwt/sphinxneeds-docker
+```
+
+
+## self built
+
+check out this repository and follow the steps below.
+
 Build the container with:
 
 ```
@@ -20,5 +39,5 @@ Run the container with
     -e "Version=v1.0" \
     -v "$(pwd)/input:/project/input" \
     -v "$(pwd)/output:/project/output" \
-        -i -t sphinxneeds_image
+    -i -t sphinxneeds_image
 ```
