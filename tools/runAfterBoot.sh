@@ -4,9 +4,11 @@ echo sphinx
 # folder to keep configuration
 mkdir -p /project/input/
 mkdir -p /project/tmp/
+mkdir -p /project/output/
+mkdir -p /project/output/pdf/
 
 
-cd tmp/
+cd /project/tmp/
 sphinx-quickstart -q -p "$Project" -a "$Author" -v "$Version" --suffix=.rst
 
 ## adding markdown support
@@ -38,7 +40,7 @@ sed -i "s/extensions = \[\]/extensions = \['sphinxcontrib.needs','sphinxcontrib.
 /bin/cp -rf /project/input/* /project/tmp
 
 # creating output
-#make latexpdf
+make latexpdf
 
 # build html directly to target dir
 make html
@@ -48,4 +50,4 @@ make html
 
 rm -rf /project/output/html/
 cp -rf /project/tmp/_build/html/ /project/output/html/
-#cp -rf /project/tmp/_build/latex/*.pdf /project/output/pdf/
+cp -rf /project/tmp/_build/latex/*.pdf /project/output/pdf/
