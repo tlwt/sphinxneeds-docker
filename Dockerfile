@@ -1,5 +1,5 @@
 # download base image ubuntu 16.10
-FROM ubuntu:16.10
+FROM ubuntu:16.04
 MAINTAINER "Till S. Witt <mail@tillwitt.de>"
 
 RUN apt-get update
@@ -8,7 +8,7 @@ RUN apt-get update
 RUN apt-get -y install python-pip
 
 # Latex/PDF support for Sphinx-docs
-RUN apt-get -y install texlive-latex-recommended texlive-fonts-recommended texlive-latex-extra latexmk
+RUN apt-get -y install texlive-latex-recommended texlive-fonts-recommended texlive-latex-extra texlive-lang-german texlive-lang-english latexmk
 
 # install tooling
 RUN apt-get install wget

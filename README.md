@@ -11,6 +11,7 @@ container to generate SPHINXneeds documentation. Will output HTML and PDF
     -e "Project=Sphinx in a docker" \
     -e "Author=Till Witt" \
     -e "Version=v1.0" \
+    -e "language=de" \
     -v "$(pwd)/input:/project/input" \
     -v "$(pwd)/output:/project/output" \
     -i -t tlwt/sphinxneeds-docker
@@ -37,7 +38,28 @@ Run the container with
     -e "Project=Sphinx in a docker" \
     -e "Author=Till Witt" \
     -e "Version=v1.0" \
+    -e "language=de" \    
     -v "$(pwd)/input:/project/input" \
     -v "$(pwd)/output:/project/output" \
     -i -t sphinxneeds_image
+```
+
+
+## as part of drone.io
+
+```
+documentation: # updating the documentation
+  image: tlwt/sphinxneeds-docker
+  environment:
+    - "Project=YourProjectNameHere"
+    - "Author=YourAuthors"
+    - "Version=YourVersionHere"
+    - "language=de"
+  commands:
+    - mkdir -p /project/tmp
+    - ln -s $PWD/yourInputDocuments /project/input
+    - mkdir -p $PWD/yourOutputDocuments    
+    - ln -s $PWD/yourOutputDocuments /project/output
+    - cd /project/tmp
+    - /tools/runAfterBoot.sh
 ```

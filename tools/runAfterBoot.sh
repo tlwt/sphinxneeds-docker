@@ -15,6 +15,8 @@ sphinx-quickstart -q -p "$Project" -a "$Author" -v "$Version" --suffix=.rst
 echo "from recommonmark.parser import CommonMarkParser" >> conf.py
 echo "source_parsers = {'.md': CommonMarkParser}" >> conf.py
 
+echo "latex_elements = { 'releasename': ' ' }" >> conf.py
+
 #activating proper suffix line
 sed -i "s/# source_suffix = \['.rst', '.md'\]/source_suffix = \['.rst', '.md'\]/g"  /project/tmp/conf.py
 
@@ -33,6 +35,14 @@ sed -i "s/# Additional stuff for the LaTeX preamble./# Additional stuff for the 
 #activating extensions
 sed -i "s/extensions = \[\]/extensions = \['sphinxcontrib.needs','sphinxcontrib.plantuml',\]/g"  /project/tmp/conf.py
 
+#setting the right language
+if [ -z "$language" ]; then
+language='english'
+fi
+sed -i "s/language = None/language = '$language'/g"  /project/tmp/conf.py
+
+#remove Documentation from title everywhere
+sed -i "s/ Documentation',/',/g"  /project/tmp/conf.py
 
 
 
@@ -51,3 +61,6 @@ make html
 rm -rf /project/output/html/
 cp -rf /project/tmp/_build/html/ /project/output/html/
 cp -rf /project/tmp/_build/latex/*.pdf /project/output/pdf/
+
+# uncomment if you want the container to stay up for debugging
+#/bin/bash
