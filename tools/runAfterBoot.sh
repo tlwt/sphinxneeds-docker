@@ -15,7 +15,10 @@ sphinx-quickstart -q -p "$Project" -a "$Author" -v "$Version" --suffix=.rst
 echo "from recommonmark.parser import CommonMarkParser" >> conf.py
 echo "source_parsers = {'.md': CommonMarkParser}" >> conf.py
 
-echo "latex_elements = { 'releasename': ' ' }" >> conf.py
+# removing release name from pdf
+echo "latex_elements = { 'releasename': ' ', 'classoptions': ',openany,oneside' }" >> conf.py
+
+
 
 #activating proper suffix line
 sed -i "s/# source_suffix = \['.rst', '.md'\]/source_suffix = \['.rst', '.md'\]/g"  /project/tmp/conf.py

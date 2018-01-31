@@ -38,7 +38,7 @@ Run the container with
     -e "Project=Sphinx in a docker" \
     -e "Author=Till Witt" \
     -e "Version=v1.0" \
-    -e "language=de" \    
+    -e "language=de" \
     -v "$(pwd)/input:/project/input" \
     -v "$(pwd)/output:/project/output" \
     -i -t sphinxneeds_image
