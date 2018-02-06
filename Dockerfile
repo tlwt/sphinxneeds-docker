@@ -48,6 +48,10 @@ RUN chmod 755 /tools/watch.sh
 WORKDIR /tools
 ADD /tools/plantuml.1.2017.19.jar .
 
+# make root project folder writable to any UID
+RUN mkdir /project \
+  && chmod 777 /project
+
 WORKDIR /project
 
 # starting the command line
