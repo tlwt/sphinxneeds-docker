@@ -18,7 +18,9 @@ RUN apt-get -y install \
   texlive-latex-recommended
 
 # install tooling
-RUN apt-get -y install wget
+RUN apt-get -y install \
+  inotify-tools \
+  wget
 
 # PlantUML tooling
 RUN apt-get -y install \
@@ -40,6 +42,8 @@ RUN chmod +x /usr/local/bin/plantuml
 # adds a local file to the image
 ADD /tools/runAfterBoot.sh /tools/
 RUN chmod 755 /tools/runAfterBoot.sh
+ADD /tools/watch.sh /tools/
+RUN chmod 755 /tools/watch.sh
 
 WORKDIR /tools
 ADD /tools/plantuml.1.2017.19.jar .
