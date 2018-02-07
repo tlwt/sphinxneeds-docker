@@ -2,7 +2,7 @@
 FROM ubuntu:16.04
 MAINTAINER "Till S. Witt <mail@tillwitt.de>"
 
-RUN apt-get update
+RUN apt-get update && apt-get upgrade -y
 
 # Install PIP
 RUN apt-get -y install python-pip
