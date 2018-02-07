@@ -2,6 +2,9 @@
 
 container to generate SPHINXneeds documentation. Will output HTML and PDF
 
+# Contribution / Changes
+
+* thanks [@PhE](https://github.com/PhE) for adding french language support (2018-02-07)
 
 # Running the container
 
