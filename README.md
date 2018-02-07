@@ -17,6 +17,24 @@ container to generate SPHINXneeds documentation. Will output HTML and PDF
     -i -t tlwt/sphinxneeds-docker
 ```
 
+## Single run vs watch mode
+
+By default, the container will end after a
+single build of the documentation.
+
+If you change the entry-point to /tools/watch.sh
+the input project folder will by watched for
+any file update. A new build will be triggered
+after each change.
+
+```
+    docker run --name sphinxneeds --rm \
+    --entrypoint /tools/watch.sh \
+    -v "$(pwd)/input:/project/input" \
+    -v "$(pwd)/output:/project/output" \
+    -i -t tlwt/sphinxneeds-docker
+```
+
 
 ## self built
 
