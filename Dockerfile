@@ -1,11 +1,13 @@
-# download base image ubuntu 16.10
-FROM ubuntu:16.04
-MAINTAINER "Till S. Witt <mail@tillwitt.de>"
+# download base image ubuntu 20.04
+FROM ubuntu:20.04
+LABEL maintainer="Till S. Witt <mail@tillwitt.de>"
+
+ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get upgrade -y
 
 # Install PIP
-RUN apt-get -y install python-pip
+RUN apt-get -y install python3-pip
 
 # Latex/PDF support for Sphinx-docs
 RUN apt-get -y install \
@@ -28,7 +30,7 @@ RUN apt-get -y install \
   graphviz
 
 # Install pip components
-RUN pip install --upgrade \
+RUN pip3 install --upgrade \
   pip \
   recommonmark \
   sphinx-rtd-theme \
